@@ -4,10 +4,17 @@
 *.o
 *.obj
 
+# Precompiled Headers
+*.gch
+*.pch
+
 # Compiled Dynamic libraries
 *.so
 *.dylib
 *.dll
+
+# Fortran module files
+*.mod
 
 # Compiled Static libraries
 *.lai
@@ -20,5 +27,21 @@
 *.out
 *.app
 
-build
-cmake_out
+# Temporary files
+*~
+.nfs*
+
+# build directory
+[Bb]uild
+
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CMakeFiles
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
