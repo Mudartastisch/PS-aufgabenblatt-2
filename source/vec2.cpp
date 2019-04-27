@@ -8,12 +8,12 @@ Vec2::Vec2(){
 Vec2::Vec2(float a, float b){
     x = a;
     y = b;
-}    
+};
 Vec2::Vec2(const Vec2& temp){
     x = temp.x;
     y = temp.y;
 
-}
+};
 
 Vec2 operator+(Vec2 const& u, Vec2 const& v)
 {

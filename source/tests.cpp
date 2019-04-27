@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 #include "vec2.hpp"  
+#include "mat2.hpp"
 
   Vec2 vec_zero_zero{};
 	Vec2 vec_zero_one{ 0.0,1.0 };
@@ -35,7 +36,7 @@ TEST_CASE("test_vec2_cpp_plus"){
 
 	Vec2 vec_prove_add_seven_one{ operator+(vec_seven_one,vec_zero_zero) };
 	REQUIRE(vec_prove_add_seven_one.x == 7.0f); //7+0=7
-REQUIRE(vec_prove_add_seven_one.y == 1.0f); //1+0=1
+	REQUIRE(vec_prove_add_seven_one.y == 1.0f); //1+0=1
 }
 
 TEST_CASE("test_vec2_cpp_minus"){
@@ -83,6 +84,16 @@ TEST_CASE("test_vec2_cpp_devide"){
 	Vec2 vec_prove_div_nOneFive_woFive{ operator/(vec_nThree_five,2.0f) };
 	REQUIRE(vec_prove_div_nOneFive_woFive.x == -1.5f); //5/0.5=10
   REQUIRE(vec_prove_div_nOneFive_woFive.y == 2.5f); //2/0.5=4
+}
+
+TEST_CASE("test_mat2_mult"){
+	Mat2 Mat_30_50_25_40{ 30,50,25,40 };
+	Mat2 Mat_2_3_1_1{ 2,3,1,1 };
+	Mat2 Mat_110_140_90_115{ operator*(Mat_30_50_25_40,Mat_2_3_1_1) };
+	REQUIRE(Mat_110_140_90_115.e_00 == 110.0f);
+	REQUIRE(Mat_110_140_90_115.e_01 == 140.0f);
+	REQUIRE(Mat_110_140_90_115.e_10 == 90.0f);
+	REQUIRE(Mat_110_140_90_115.e_11 == 115.0f);
 }
 int main(int argc, char *argv[])
 {
