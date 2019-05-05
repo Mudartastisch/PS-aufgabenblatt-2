@@ -1,4 +1,5 @@
 #include "mat2.hpp"
+#include <cmath>
 
 Mat2::Mat2(){
     e_00 = 1.0f;
@@ -30,6 +31,55 @@ Mat2 operator*( Mat2 const& m1 , Mat2 const& m2 ){
     float temp_e_01 = m1.e_00 * m2.e_01 + m1.e_01 * m2.e_11;
     float temp_e_10 = m1.e_10 * m2.e_00 + m1.e_10 * m2.e_10;
     float temp_e_11 = m1.e_10 * m2.e_01 + m1.e_11 * m2.e_11;
+    Mat2 temp{temp_e_00, temp_e_01, temp_e_10, temp_e_11};
+    return temp;
+}
+
+float Mat2::det() const{
+    return (e_00 * e_11 - e_01 * e_10);
+}
+
+Mat2 operator*( Mat2 const& m , Vec2 const& v ){
+    float temp_e_00 = m.e_00 * v.x;
+    float temp_e_01 = m.e_01 * v.y;
+    float temp_e_10 = m.e_10 * v.x;
+    float temp_e_11 = m.e_11 * v.y ;
+    Mat2 temp{temp_e_00, temp_e_01, temp_e_10, temp_e_11};
+    return temp;
+}
+
+Mat2 operator*(Vec2 const& v,  Mat2 const& m){
+    float temp_e_00 = m.e_00 * v.x;
+    float temp_e_01 = m.e_01 * v.y;
+    float temp_e_10 = m.e_10 * v.x;
+    float temp_e_11 = m.e_11 * v.y ;
+    Mat2 temp{temp_e_00, temp_e_01, temp_e_10, temp_e_11};
+    return temp;
+}
+
+Mat2 inverse(Mat2 const& m){
+    float temp_e_00 = m.e_11 * -1 * (1 / m.det());
+    float temp_e_01 = m.e_10 * -1 * (1 / m.det());
+    float temp_e_10 = m.e_01 * -1 * (1 / m.det());
+    float temp_e_11 = m.e_00 * -1 * (1 / m.det());
+    Mat2 temp{temp_e_00, temp_e_01, temp_e_10, temp_e_11};
+    return temp;
+}
+
+Mat2 transpose(Mat2 const& m){
+    float temp_e_00 = m.e_00;
+    float temp_e_01 = m.e_10;
+    float temp_e_10 = m.e_01;
+    float temp_e_11 = m.e_11;
+    Mat2 temp{temp_e_00, temp_e_01, temp_e_10, temp_e_11};
+    return temp;
+}
+
+Mat2 make_rotation_mat2(float phi){
+    float temp_e_00 = std::cos(phi);
+    float temp_e_01 = std::sin(-phi);
+    float temp_e_10 = std::sin(phi);
+    float temp_e_11 = std::cos(phi);
     Mat2 temp{temp_e_00, temp_e_01, temp_e_10, temp_e_11};
     return temp;
 }
