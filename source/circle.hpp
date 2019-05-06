@@ -2,21 +2,21 @@
 #define CIRCLE_HPP
 #include "vec2.hpp"
 #include "color.hpp"
+#include "window.hpp"
 
-class circle
+class Circle
 {
 private:
     Vec2 center;
     float radius;
     Color color;
 public:
-    circle();
-    circle(Vec2 v, float r, Color c);
-    circle(const circle& temp);
+    Circle();
+    Circle(Vec2 v, float r, Color c);
 
-    const Vec2& getCenter();
     float getRadius();
-    const Color& getColor();
+
+    void draw(Window const& win);
 };
 
 #endif //CIRCLE_HPP

@@ -1,8 +1,10 @@
 #include "rectangle.hpp"
 #include "vec2.hpp"
 #include "color.hpp"
+#include <GLFW/glfw3.h>
+#include <utility>
 
-rectangle::rectangle(){
+Rectangle::Rectangle(){
     min = Vec2(0.0f,0.0f);
     max = Vec2(1.0f,1.0f);
     topLeft = Vec2(min.x, max.y);
@@ -10,7 +12,7 @@ rectangle::rectangle(){
     color = Color();
 }
 
-rectangle::rectangle(Vec2 min_, Vec2 max_, Color c){
+Rectangle::Rectangle(Vec2 const& min_, Vec2 const& max_, Color c){
     min = min_;
     max = max_;
     topLeft = Vec2(min.x, max.y);
@@ -18,22 +20,19 @@ rectangle::rectangle(Vec2 min_, Vec2 max_, Color c){
     color = c;
 }
 
-rectangle::rectangle(const rectangle& temp){
-    min = temp.getMin;
-    max = temp.getMax;
-    topLeft = Vec2(min.x, max.y);
-    bottomRight = Vec2(max.x, min.y);
-    color = temp.getColor;
-}
 
-const Vec2& rectangle::getMin(){
+Vec2& Rectangle::getMin(){
     return min;
 }
 
-const Vec2& rectangle::getMax(){
+Vec2& Rectangle::getMax(){
     return max;
 }
 
-const Color& rectangle::getColor(){
-    return color;
+
+void Rectangle::draw(Window const& win){
+    win.draw_line(min.x, min.y, topLeft.x, topLeft.y, color.r, color.g, color.b);
+    win.draw_line(topLeft.x, topLeft.y, max.x, max.y, color.r, color.g, color.b);
+    win.draw_line(max.x, max.y, bottomRight.x, bottomRight.y, color.r, color.g, color.b);
+    win.draw_line(bottomRight.x, bottomRight.y, min.x, min.y, color.r, color.g, color.b);
 }

@@ -2,8 +2,9 @@
 #define RECTANGLE_HPP
 #include "vec2.hpp"
 #include "color.hpp"
+#include "window.hpp"
 
-class rectangle
+class Rectangle
 {
 private:
     Vec2 min;
@@ -12,13 +13,13 @@ private:
     Vec2 bottomRight;
     Color color;
 public:
-    rectangle();
-    rectangle(Vec2 min_, Vec2 max_, Color c);
-    rectangle(const rectangle& temp);
+    Rectangle();
+    Rectangle(Vec2 const& min_, Vec2 const& max_, Color c);
 
-    const Vec2& getMin();
-    const Vec2& getMax();
-    const Color& getColor();
+    Vec2& getMin();
+    Vec2& getMax();
+   
+    void draw(Window const& win);
 };
 
 

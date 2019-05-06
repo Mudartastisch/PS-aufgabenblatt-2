@@ -2,12 +2,21 @@
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
-
+#include "vec2.hpp"
+#include "circle.hpp"
+#include "rectangle.hpp"
+#include "color.hpp"
 
 int main(int argc, char* argv[])
 {
   Window win{std::make_pair(800,800)};
-
+  Color red{ 1.0,0.0,0.0 };
+  Color green{0.0, 1.0, 0.0};
+  Vec2 rec_1{ 350.0f,450.0f };
+  Vec2 rec_2{ 450.f,350.0f };
+  Rectangle rec(rec_1, rec_2, red);
+  Vec2 circle_c{400.0f, 400.0f};
+  Circle circ(circle_c, 50.0f, green);
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
@@ -51,6 +60,10 @@ int main(int argc, char* argv[])
     unsigned int font_size = 35;
     
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
+
+    //task stuff
+    rec.draw(win);
+    circ.draw(win);
 
     win.update();
   }

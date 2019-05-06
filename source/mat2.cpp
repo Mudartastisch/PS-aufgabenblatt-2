@@ -39,21 +39,17 @@ float Mat2::det() const{
     return (e_00 * e_11 - e_01 * e_10);
 }
 
-Mat2 operator*( Mat2 const& m , Vec2 const& v ){
-    float temp_e_00 = m.e_00 * v.x;
-    float temp_e_01 = m.e_01 * v.y;
-    float temp_e_10 = m.e_10 * v.x;
-    float temp_e_11 = m.e_11 * v.y ;
-    Mat2 temp{temp_e_00, temp_e_01, temp_e_10, temp_e_11};
+Vec2 operator*( Mat2 const& m , Vec2 const& v ){
+    float temp_x = m.e_00 * v.x + m.e_01 * v.y;
+    float temp_y = m.e_10 * v.x + m.e_11 * v.y ;
+    Vec2 temp{temp_x, temp_y};
     return temp;
 }
 
-Mat2 operator*(Vec2 const& v,  Mat2 const& m){
-    float temp_e_00 = m.e_00 * v.x;
-    float temp_e_01 = m.e_01 * v.y;
-    float temp_e_10 = m.e_10 * v.x;
-    float temp_e_11 = m.e_11 * v.y ;
-    Mat2 temp{temp_e_00, temp_e_01, temp_e_10, temp_e_11};
+Vec2 operator*(Vec2 const& v,  Mat2 const& m){
+    float temp_x = m.e_00 * v.x + m.e_01 * v.y;
+    float temp_y = m.e_10 * v.x + m.e_11 * v.y ;
+    Vec2 temp{temp_x, temp_y};
     return temp;
 }
 
@@ -77,7 +73,7 @@ Mat2 transpose(Mat2 const& m){
 
 Mat2 make_rotation_mat2(float phi){
     float temp_e_00 = std::cos(phi);
-    float temp_e_01 = std::sin(-phi);
+    float temp_e_01 = (std::sin(phi) * -1);
     float temp_e_10 = std::sin(phi);
     float temp_e_11 = std::cos(phi);
     Mat2 temp{temp_e_00, temp_e_01, temp_e_10, temp_e_11};

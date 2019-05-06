@@ -23,8 +23,8 @@ Mat2& operator*=( Mat2 const& m );
 // TODO(in mat2.cpp) Definition v.operator *
 Mat2 operator*( Mat2 const& m1 , Mat2 const& m2 );
 
-Mat2 operator*( Mat2 const& m , Vec2 const& v );
-Mat2 operator*( Vec2 const& v , Mat2 const& m );
+Vec2 operator*( Mat2 const& m , Vec2 const& v );
+Vec2 operator*( Vec2 const& v , Mat2 const& m );
 
 Mat2 inverse(Mat2 const& m );
 Mat2 transpose ( Mat2 const & m );

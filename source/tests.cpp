@@ -16,11 +16,10 @@
 	Vec2 vec_seven_one{ 7.0,1.0 };
   
 TEST_CASE("test_vec2_hpp") {
-  Vec2 a ; // requires that 0.0f == a.x and 0.0f == a.y
+  Vec2 a = Vec2() ; // requires that 0.0f == a.x and 0.0f == a.y
   REQUIRE(0.0f == a.x);
   REQUIRE(0.0f == a.y);
-  Vec2 b {5.1f, -9.3f }; /* requires that 5.1f == approx(a.y) and -9.3f ==approx(b.y) */
-  //copy pasting from task sheet here, I know the line above is bs
+  Vec2 b {5.1f, -9.3f }; /* requires that 5.1 f == Approx ( b . x ) and -9.3 f == Approx ( b . y ) */
   REQUIRE(5.1f == Approx(b.x));
   REQUIRE(-9.3f == Approx(b.y));
 
@@ -99,14 +98,14 @@ TEST_CASE("test_mat2_mult"){
 	REQUIRE(Mat_110_140_90_115.e_11 == 115.0f);
 }
 
-float circumference(const circle& c){
+float circumference(Circle& c){
 	//2*pi*r
-	return 2 * M_PI * c.getRadius;
+	return 2 * M_PI * c.getRadius();
 }
 
-float circumference(const rectangle& r){
+float circumference(Rectangle& r){
 	//2*(xdifference + ydifference)
-	return 2 * ((r.getMax.x - r.getMin.x) + (r.getMax.y - r.getMin.y));
+	return 2 * ((r.getMax().x - r.getMin().x) + (r.getMax().y - r.getMin().y));
 }
 
 int main(int argc, char *argv[])
