@@ -17,6 +17,9 @@ public:
     float getRadius();
 
     void draw(Window const& win);
+    void draw(Window const& win, float thickness);
+
+    bool is_inside(Vec2 const& test);
 };
 
 #endif //CIRCLE_HPP

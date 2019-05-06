@@ -20,6 +20,9 @@ public:
     Vec2& getMax();
    
     void draw(Window const& win);
+    void draw(Window const& win, float thickness);
+
+    bool is_inside(Vec2 const& test);
 };
 
 
