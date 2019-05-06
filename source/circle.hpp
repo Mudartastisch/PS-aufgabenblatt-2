@@ -18,6 +18,7 @@ public:
 
     void draw(Window const& win);
     void draw(Window const& win, float thickness);
+    void drawClock(Window const& win, float degree);
 
     bool is_inside(Vec2 const& test);
 };
