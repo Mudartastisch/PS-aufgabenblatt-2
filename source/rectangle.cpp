@@ -8,10 +8,24 @@ rectangle::rectangle(){
     bottomRight = Vec2(max.x, min.y);
 }
 
-rectangle::rectangle(Vec2 min, Vec2 max){
-
+rectangle::rectangle(Vec2 min_, Vec2 max_){
+    min = min_;
+    max = max_;
+    topLeft = Vec2(min.x, max.y);
+    bottomRight = Vec2(max.x, min.y);
 }
 
 rectangle::rectangle(const rectangle& temp){
+    min = temp.getMin;
+    max = temp.getMax;
+    topLeft = Vec2(min.x, max.y);
+    bottomRight = Vec2(max.x, min.y);
+}
 
+const Vec2& rectangle::getMin(){
+    return min;
+}
+
+const Vec2& rectangle::getMax(){
+    return max;
 }

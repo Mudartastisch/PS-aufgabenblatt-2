@@ -1,7 +1,10 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
+#include <cmath>
 #include "vec2.hpp"  
 #include "mat2.hpp"
+#include "circle.hpp"
+#include "rectangle.hpp"
 
   Vec2 vec_zero_zero{};
 	Vec2 vec_zero_one{ 0.0,1.0 };
@@ -95,6 +98,17 @@ TEST_CASE("test_mat2_mult"){
 	REQUIRE(Mat_110_140_90_115.e_10 == 90.0f);
 	REQUIRE(Mat_110_140_90_115.e_11 == 115.0f);
 }
+
+float circumference(const circle& c){
+	//2*pi*r
+	return 2 * M_PI * c.getRadius;
+}
+
+float circumference(const rectangle& r){
+	//2*(xdifference + ydifference)
+	return 2 * ((r.getMax.x - r.getMin.x) + (r.getMax.y - r.getMin.y));
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);

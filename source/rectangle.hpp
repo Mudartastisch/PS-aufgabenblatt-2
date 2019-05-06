@@ -11,7 +11,7 @@ private:
     Vec2 bottomRight;
 public:
     rectangle();
-    rectangle(Vec2 min, Vec2 max);
+    rectangle(Vec2 min_, Vec2 max_);
     rectangle(const rectangle& temp);
 
     const Vec2& getMin();
